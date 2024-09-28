@@ -11,6 +11,7 @@ app = Flask(__name__)
 Scss(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///dados.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 db = SQLAlchemy(app)
 
 
@@ -26,6 +27,8 @@ class Movimento(db.Model):
         return f"Movimento {self.id}"
 
 
+with app.app_context():
+        db.create_all()
 
 # ROUTES
 
@@ -82,7 +85,5 @@ def update_movimento(id:int):
 
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
 
     app.run(debug=True)

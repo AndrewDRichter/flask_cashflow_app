@@ -4,14 +4,16 @@
 
 {% block body %}
 
-    <form action="/update/{{movimento.id}}" method="POST">
-        <input type="text" name="descricao" id="descricao" value="{{movimento.descricao}}">
-        <select name="tipo" id="tipo">
-            <option value="0" {% if movimento.tipo == 0 %}selected{% endif %}>Entrada</option>
-            <option value="1" {% if movimento.tipo == 1 %}selected{% endif %}>Saída</option>
-        </select>
-        <input type="number" name="valor" id="valor" value="{{movimento.valor}}">
-        <input type="submit" value="Update" id="btn_update">
-    </form>
+    <div class="content">
+        <form action="/update/{{movimento.id}}" method="POST">
+            <input type="text" name="descricao" id="descricao" value="{{movimento.descricao}}">
+            <select name="tipo" id="tipo">
+                <option value="0" {% if movimento.tipo == 0 %}selected{% endif %}>Entrada</option>
+                <option value="1" {% if movimento.tipo == 1 %}selected{% endif %}>Saída</option>
+            </select>
+            <input type="number" name="valor" id="valor" value="{{movimento.valor}}">
+            <input type="submit" value="Update" id="btn_add">
+        </form>
+    </div>
 
 {% endblock body %}
